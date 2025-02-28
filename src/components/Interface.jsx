@@ -6,13 +6,14 @@ import {
   FormLabel,
   Radio,
   RadioGroup,
+  Slider,
   Stack,
 } from "@mui/material";
 import React, { useState } from "react";
 import { useConfigurator } from "../contexts/Configurator";
 
 const Interface = () => {
-  const { legs, setLegs, legsColor, setLegsColor } = useConfigurator();
+  const { legs, setLegs, legsColor, setLegsColor, tableWidth, setTableWidth } = useConfigurator();
   const [opened, setOpened] = useState(window.innerWidth > 1024);
 
   return (
@@ -27,6 +28,21 @@ const Interface = () => {
         </Button>
         {opened && (
           <>
+            <Box className="glass p-3 pr-8">
+              <FormControl>
+                <FormLabel>Table width</FormLabel>
+                <Slider
+                  sx={{
+                    width: "200px",
+                  }}
+                  min={50}
+                  max={200}
+                  value={tableWidth}
+                  onChange={(e) => setTableWidth(e.target.value)}
+                  valueLabelDisplay="auto"
+                />
+              </FormControl>
+            </Box>
             <Box className="glass p-3 pr-8">
               <FormControl>
                 <FormLabel id="legs-layout">Legs Layout</FormLabel>
