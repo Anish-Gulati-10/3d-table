@@ -3,9 +3,13 @@ import { createContext, useContext, useState } from "react";
 const ConfiguratorContext = createContext();
 
 export const ConfiguratorProvider = ({ children }) => {
-  const [legs, setLegs] = useState(0)
+  const [legs, setLegs] = useState(0);
+  const [legsColor, setLegsColor] = useState("#999999");
   return (
-    <ConfiguratorContext.Provider value={{legs, setLegs}}>{children}</ConfiguratorContext.Provider>
+    <ConfiguratorContext.Provider
+      value={{ legs, setLegs, legsColor, setLegsColor }}>
+      {children}
+    </ConfiguratorContext.Provider>
   );
 };
 

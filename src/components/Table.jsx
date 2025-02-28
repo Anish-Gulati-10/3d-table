@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useConfigurator } from "../contexts/Configurator";
+import * as Three from "three";
 
 export function Table(props) {
   const { nodes, materials } = useGLTF("./model/Table.gltf");
-  const { legs } = useConfigurator();
+  const { legs, legsColor } = useConfigurator();
+  useEffect(() => {
+    materials.Metal.color = new Three.Color(legsColor);
+  }, [legsColor]);
+  
   return (
     <group {...props} dispose={null}>
       <mesh
