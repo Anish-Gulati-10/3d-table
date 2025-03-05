@@ -9,6 +9,7 @@ import {
   Slider,
   Stack,
 } from "@mui/material";
+import { Menu, X } from "lucide-react";
 import React, { useState } from "react";
 import { useConfigurator } from "../contexts/Configurator";
 
@@ -24,7 +25,7 @@ const Interface = () => {
           style={{
             justifyContent: "flex-end",
           }}>
-          {opened ? "Close" : "Open"}
+          {opened ? <X /> : <Menu />}
         </Button>
         {opened && (
           <>
